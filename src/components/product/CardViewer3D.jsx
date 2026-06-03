@@ -39,17 +39,34 @@ export default function CardViewer3D({ product }) {
 
   return (
     <div className="w-full h-full relative">
-      {/* Placeholder shimmer until model loads */}
+      {/* Spinner overlay until model loads */}
       <AnimatePresence>
         {!ready && (
           <motion.div
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3"
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             style={{
-              background: `radial-gradient(ellipse at 50% 50%, ${product.color}22 0%, ${product.color}08 60%, transparent 100%)`,
+              background: `radial-gradient(ellipse at 50% 50%, ${product.color}18 0%, ${product.color}06 70%, transparent 100%)`,
             }}
-          />
+          >
+            {/* Spinning ring */}
+            <div className="relative w-10 h-10">
+              <svg className="w-full h-full -rotate-90 animate-spin" viewBox="0 0 40 40"
+                style={{ animationDuration: '0.9s' }}>
+                <circle cx="20" cy="20" r="16" fill="none"
+                  stroke={`${product.color}22`} strokeWidth="3" />
+                <circle cx="20" cy="20" r="16" fill="none"
+                  stroke={product.color} strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeDasharray="60 40" />
+              </svg>
+            </div>
+            <p className="text-[10px] font-semibold tracking-widest uppercase"
+              style={{ color: product.color, opacity: 0.7 }}>
+              Loading 3D
+            </p>
+          </motion.div>
         )}
       </AnimatePresence>
 
