@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    width: 100%; min-height: 100%;
+    overflow-x: hidden;
+    background: #fdfaf8;
+    color: #1a1a1a;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { width: 100%; min-height: 100vh; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #fef6f2; }
+  ::-webkit-scrollbar-thumb { background: #e91e8c44; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #e91e8c; }
+}
+
+@layer components {
+  /* ─── Soft white card ─── */
+  .glass-card {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(233,30,140,0.1);
+    box-shadow: 0 4px 24px rgba(233,30,140,0.06);
+  }
+
+  /* ─── Pink gradient text ─── */
+  .pink-text {
+    background: linear-gradient(135deg, #e91e8c, #c9921a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── Gold shimmer text ─── */
+  .gold-text {
+    background: linear-gradient(135deg, #c9921a, #e8b84b, #c9921a);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ─── Primary pink CTA ─── */
+  .btn-gold {
+    background: linear-gradient(135deg, #e91e8c, #d4167e);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-gold:hover {
+    background: linear-gradient(135deg, #f0259a, #e91e8c);
+    box-shadow: 0 6px 24px rgba(233,30,140,0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ─── Outline secondary ─── */
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(233,30,140,0.35);
+    color: #e91e8c;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    background: rgba(233,30,140,0.06);
+    border-color: #e91e8c;
+    box-shadow: 0 4px 16px rgba(233,30,140,0.18);
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
